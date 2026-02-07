@@ -52,7 +52,7 @@ p{
   background:radial-gradient(circle,#ffd6dc,#f4a3b2);
 }
 
-/* 🌹 PURE CSS BLOOMING ROSE */
+/* 🌹 BLOOMING ROSE */
 .rose{
   position:relative;
   width:120px;
@@ -80,11 +80,18 @@ p{
 .rose span:nth-child(5){transform:rotate(240deg);animation-delay:1.4s}
 .rose span:nth-child(6){transform:rotate(300deg);animation-delay:1.7s}
 
-@keyframes bloom{
-  to{opacity:1}
+@keyframes bloom{to{opacity:1}}
+
+/* IMAGE STYLE */
+.photo{
+  width:85%;
+  max-width:330px;
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+  margin-bottom:18px;
 }
 
-/* FALLING PETALS */
+/* PETALS */
 .petal{
   position:fixed;
   top:-10px;
@@ -145,26 +152,49 @@ p{
   <p>For <b>Ifrah (Iffu)</b><br>— from <b>Shiv</b></p>
 </section>
 
-<!-- PAGE 2 -->
+<!-- IMAGE PAGE 1 -->
 <section style="background:#fff1f4">
-  <h2>You Are My Rose</h2>
+  <img src="photo1.jpg" class="photo" alt="Us">
+  <h2>This Moment</h2>
   <p>
-    I didn’t need a flower to choose you.  
-    You became my rose the moment you entered my life.
+    This picture reminds me  
+    how lucky I am to call you mine.
   </p>
 </section>
 
-<!-- PAGE 3 : WHAT DO I CALL YOU -->
+<!-- IMAGE PAGE 2 -->
+<section style="background:#ffe3ea">
+  <img src="photo2.jpg" class="photo" alt="Together">
+  <h2>My Favorite Place</h2>
+  <p>
+    Not a café.  
+    Not a city.  
+    Just wherever you are.
+  </p>
+</section>
+
+<!-- IMAGE PAGE 3 -->
+<section style="background:#fff0f3">
+  <img src="photo3.jpg" class="photo" alt="Memory">
+  <h2>This Frame ❤️</h2>
+  <p>
+    Some moments don’t need filters.  
+    They’re already perfect.
+  </p>
+</section>
+
+<!-- WHAT DO I CALL YOU -->
 <section style="background:#ffe8ee">
   <h2>What do I call you? 💖</h2>
   <input id="nameInput" placeholder="hint: my favorite name"
     style="padding:12px;border-radius:12px;border:1px solid #ccc">
-  <button onclick="checkName()" style="margin-top:16px;padding:12px 24px;border-radius:24px;border:none;background:#c9184a;color:white">
+  <button onclick="checkName()"
+    style="margin-top:16px;padding:12px 24px;border-radius:24px;border:none;background:#c9184a;color:white">
     Submit
   </button>
 </section>
 
-<!-- PAGE 4 -->
+<!-- VIDEO -->
 <section style="background:#fff5f7">
   <h2>Our Little Movie 🎥</h2>
   <video controls playsinline preload="metadata"
@@ -173,7 +203,7 @@ p{
   </video>
 </section>
 
-<!-- PAGE 5 -->
+<!-- FINAL -->
 <section style="background:#ffd6dc">
   <h1>💖 I Love You Iffu 💖</h1>
   <p>Forever yours,<br>Shiv ❤️</p>
