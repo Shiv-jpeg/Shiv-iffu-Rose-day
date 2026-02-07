@@ -52,41 +52,49 @@ p{
   background:radial-gradient(circle,#ffd6dc,#f4a3b2);
 }
 
-/* ROSE BLOOM */
+/* 🌹 PURE CSS BLOOMING ROSE */
 .rose{
+  position:relative;
   width:120px;
   height:120px;
-  background:url("https://i.imgur.com/5QZn8sP.png") center/contain no-repeat;
-  animation:bloom 4s ease forwards;
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
+
+.rose span{
+  position:absolute;
+  width:60px;
+  height:60px;
+  background:radial-gradient(circle at 30% 30%, #ff6b81, #b11226);
+  border-radius:50% 50% 50% 0;
+  top:30px;
+  left:30px;
+  transform-origin:bottom right;
+  opacity:0;
+  animation:bloom 2.8s forwards;
+}
+
+.rose span:nth-child(1){transform:rotate(0deg);animation-delay:.2s}
+.rose span:nth-child(2){transform:rotate(60deg);animation-delay:.5s}
+.rose span:nth-child(3){transform:rotate(120deg);animation-delay:.8s}
+.rose span:nth-child(4){transform:rotate(180deg);animation-delay:1.1s}
+.rose span:nth-child(5){transform:rotate(240deg);animation-delay:1.4s}
+.rose span:nth-child(6){transform:rotate(300deg);animation-delay:1.7s}
 
 @keyframes bloom{
-  0%{transform:scale(0) rotate(-30deg);opacity:0}
-  100%{transform:scale(1) rotate(0);opacity:1}
+  to{opacity:1}
 }
 
-/* IMAGES */
-.photo{
-  width:85%;
-  max-width:330px;
-  border-radius:18px;
-  box-shadow:0 12px 30px rgba(0,0,0,.25);
-  margin:20px 0;
+/* FALLING PETALS */
+.petal{
+  position:fixed;
+  top:-10px;
+  font-size:18px;
+  animation:fall linear infinite;
+  pointer-events:none;
 }
 
-.rotate{transform:rotate(90deg)}
-
-.tap{
-  margin-top:20px;
-  opacity:.75;
-  animation:pulse 1.6s infinite;
-}
-
-@keyframes pulse{
-  0%{opacity:.4}
-  50%{opacity:1}
-  100%{opacity:.4}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg)}
 }
 
 /* MUSIC OVERLAY */
@@ -110,19 +118,6 @@ p{
   color:white;
   font-size:1rem;
 }
-
-/* PETALS */
-.petal{
-  position:fixed;
-  top:-10px;
-  font-size:18px;
-  animation:fall linear infinite;
-  pointer-events:none;
-}
-
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg)}
-}
 </style>
 </head>
 
@@ -134,7 +129,7 @@ p{
 
 <div id="musicOverlay">
   <h2>For Ifrah 💖</h2>
-  <p>Tap once to start the music</p>
+  <p>Tap once to begin</p>
   <button onclick="startMusic()">Start 🎵</button>
 </div>
 
@@ -142,42 +137,43 @@ p{
 
 <!-- PAGE 1 -->
 <section class="hero">
-  <div class="rose"></div>
+  <div class="rose">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
   <h1>Happy Rose Day 🌹</h1>
-  <p>This is for <b>Ifrah (Iffu)</b><br>— from <b>Shiv</b></p>
-  <div class="tap">Swipe ↓</div>
+  <p>For <b>Ifrah (Iffu)</b><br>— from <b>Shiv</b></p>
 </section>
 
 <!-- PAGE 2 -->
 <section style="background:#fff1f4">
-  <img src="photo1.jpg" class="photo" alt="Photo 1">
-  <h2>You & Me</h2>
-  <p>Every mirror looks better when you’re in it.</p>
+  <h2>You Are My Rose</h2>
+  <p>
+    I didn’t need a flower to choose you.  
+    You became my rose the moment you entered my life.
+  </p>
 </section>
 
-<!-- PAGE 3 -->
-<section style="background:#ffe3ea">
-  <img src="photo2.jpg" class="photo" alt="Photo 2">
-  <h2>My Safe Place</h2>
-  <p>Not a place. Just you.</p>
+<!-- PAGE 3 : WHAT DO I CALL YOU -->
+<section style="background:#ffe8ee">
+  <h2>What do I call you? 💖</h2>
+  <input id="nameInput" placeholder="hint: my favorite name"
+    style="padding:12px;border-radius:12px;border:1px solid #ccc">
+  <button onclick="checkName()" style="margin-top:16px;padding:12px 24px;border-radius:24px;border:none;background:#c9184a;color:white">
+    Submit
+  </button>
 </section>
 
 <!-- PAGE 4 -->
-<section style="background:#fff0f3">
-  <img src="photo3.jpg" class="photo rotate" alt="Photo 3">
-  <h2>This Frame ❤️</h2>
-  <p>One of my happiest memories with you.</p>
-</section>
-
-<!-- PAGE 5 -->
 <section style="background:#fff5f7">
   <h2>Our Little Movie 🎥</h2>
-  <video controls playsinline style="width:90%;max-width:360px;border-radius:18px">
+  <video controls playsinline preload="metadata"
+    style="width:90%;max-width:360px;border-radius:18px">
     <source src="love.mp4" type="video/mp4">
   </video>
 </section>
 
-<!-- PAGE 6 -->
+<!-- PAGE 5 -->
 <section style="background:#ffd6dc">
   <h1>💖 I Love You Iffu 💖</h1>
   <p>Forever yours,<br>Shiv ❤️</p>
@@ -187,13 +183,12 @@ p{
 
 <script>
 function startMusic(){
-  const m=document.getElementById("bgMusic");
-  m.play().then(()=>{
+  document.getElementById("bgMusic").play().then(()=>{
     document.getElementById("musicOverlay").style.display="none";
   });
 }
 
-// PETALS
+/* Falling petals */
 setInterval(()=>{
   const p=document.createElement("div");
   p.className="petal";
@@ -202,7 +197,26 @@ setInterval(()=>{
   p.style.animationDuration=(3+Math.random()*3)+"s";
   document.body.appendChild(p);
   setTimeout(()=>p.remove(),6000);
-},400);
+},500);
+
+/* What do I call you */
+function checkName(){
+  const v=document.getElementById("nameInput").value.toLowerCase();
+  if(v==="iffu"){
+    alert("💖 Always Iffu 💖");
+  }else{
+    alert("Nope 😛 try again");
+  }
+}
+
+/* Easter Egg */
+let taps=0;
+document.body.addEventListener("click",()=>{
+  taps++;
+  if(taps===18){
+    alert("💖 I love you more than anything, Iffu 💖");
+  }
+});
 </script>
 
 </body>
