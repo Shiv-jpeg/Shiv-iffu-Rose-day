@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Shiv ❤️ Iffu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background: #fff;
+}
+
+.swiper {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+section {
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: #7a1020;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #5a1a22;
+  max-width: 520px;
+}
+
+.hero {
+  background: radial-gradient(circle, #ffd6dc, #f4a3b2);
+}
+
+.photo {
+  width: 85%;
+  max-width: 330px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  margin: 20px 0;
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.tap {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: .4 }
+  50% { opacity: 1 }
+  100% { opacity: .4 }
+}
+
+/* Music overlay */
+#musicOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 214, 220, 0.95);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#musicOverlay button {
+  margin-top: 20px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  background: #c9184a;
+  color: #fff;
+  font-size: 1rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC (will work after tap only) -->
+<audio id="bgMusic" loop>
+  <source src="./music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC START OVERLAY -->
+<div id="musicOverlay">
+  <h2>For Ifrah 💖</h2>
+  <p>Tap once to start the music</p>
+  <button onclick="startMusic()">Start 🎵</button>
+</div>
+
+<div class="swiper">
+
+<!-- PAGE 1 -->
+<section class="hero">
+  <h1>Happy Rose Day 🌹</h1>
+  <p>
+    This is for <b>Ifrah (Iffu)</b><br>
+    — from <b>Shiv</b>
+  </p>
+  <div class="tap">Swipe ↓</div>
+</section>
+
+<!-- PAGE 2 -->
+<section style="background:#fff1f4">
+  <img src="./photo1.jpg" class="photo" alt="You and Me">
+  <h2>You & Me</h2>
+  <p>Every mirror looks better when you’re in it.</p>
+</section>
+
+<!-- PAGE 3 -->
+<section style="background:#ffe3ea">
+  <img src="./photo2.jpg" class="photo" alt="Cafe">
+  <h2>My Safe Place</h2>
+  <p>Not a place. Just you.</p>
+</section>
+
+<!-- PAGE 4 -->
+<section style="background:#fff0f3">
+  <img src="./photo3.jpg" class="photo rotate" alt="Memory">
+  <h2>This Frame ❤️</h2>
+  <p>One of my happiest memories with you.</p>
+</section>
+
+<!-- PAGE 5 -->
+<section style="background:#fff5f7">
+  <h2>Our Little Movie 🎥</h2>
+  <video controls playsinline
+    style="width:90%;max-width:360px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,0.25)">
+    <source src="./love.mp4" type="video/mp4">
+    Your browser does not support the video.
+  </video>
+</section>
+
+<!-- PAGE 6 -->
+<section style="background:#ffd6dc">
+  <h1>💖 I Love You Iffu 💖</h1>
+  <p>Forever yours,<br>Shiv ❤️</p>
+</section>
+
+</div>
+
+<script>
+function startMusic() {
+  const music = document.getElementById("bgMusic");
+  music.play().then(() => {
+    document.getElementById("musicOverlay").style.display = "none";
+  }).catch(() => {
+    alert("Tap again to allow music 🎵");
+  });
+}
+</script>
+
+</body>
+</html>
